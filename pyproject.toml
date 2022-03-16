@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "cmpe195tikrbot"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+discord = "^1.7.3"
+yfinance = "^0.1.64"
+tabulate = "^0.8.9"
+finviz = "^1.4.4"
+urllib3_1_26_2 = "^1.26.2"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
