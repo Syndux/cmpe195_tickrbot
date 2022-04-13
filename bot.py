@@ -26,7 +26,7 @@ async def on_disconnect():
 @bot.event
 async def on_command_error(ctx, error):
     embed = discord.Embed(
-        color = discord.Color.red(),
+        color = discord.Color.red()
     )
     if isinstance(error, commands.MissingRequiredArgument):
         embed.add_field(
@@ -80,7 +80,6 @@ async def help_command(ctx, command=None):
             color = discord.Color.blue(),
             title = 'TickrBot Help \n!help <command> for help on a specific command.'
         )
-        
         embed.add_field(
             name = '!chart <symbol> <duration>',
             value = 'Gets a stock chart in a specified duration.',
@@ -106,16 +105,9 @@ async def help_command(ctx, command=None):
 # !chart <symbol> <duration> function
 @bot.command(name = 'chart')
 async def charting(ctx, symbol, duration):
-    embed = discord.Embed(
-        color = discord.Color.red()
-    )
     message = c.get_chart(symbol, duration)
-    if message ==  'Incorrect time period.':
-        embed.add_field(
-            name = message,
-            value = '!help chart for more info.'
-        )
-        await ctx.send(embed = embed)
+    if message != True:
+        await ctx.send(embed = message)
     else:
         filename = f'chart_{symbol}{duration}.png'
         with open(f'charts/chart_{symbol}{duration}.png', 'rb') as handle:
@@ -128,7 +120,8 @@ async def charting(ctx, symbol, duration):
 @bot.command(name = 'quote')
 async def quoting(ctx, symbol):
     embed = q.get_quote(symbol)
-    await ctx.send(embed)
+    print("exited q.get_quote func")
+    await ctx.send(embed = embed)
 
 
 #================================== FUN STUFF =======================================================================

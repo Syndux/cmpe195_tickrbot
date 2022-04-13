@@ -18,12 +18,17 @@ All notable changes to this project will be documented in this file using Semant
 - For any bug fixes
 
 
-## [1.6.4] - 2022-04-12
+## [1.6.5] - 2022-04-11
 ### Changed
-- Look up stock quotes no longer uses Finnhub API function
-- Quoting uses requests library to fetch stock information from Finnhub
+- Look up stock quotes now uses Finnhub API function to simplify functionality
+- Quoting no longer needs to use requests library to fetch stock information from Finnhub
 ### Fixed
 - 403 Error when looking up stock quotes with Finnhub API function
+
+
+## [1.6.4] - 2022-04-10
+### Changed
+- import Discord library to send embedded messages from within function
 
 
 ## [1.6.3] - 2022-04-08
@@ -33,7 +38,7 @@ All notable changes to this project will be documented in this file using Semant
 
 ## [1.6.2] - 2022-03-25
 ### Added
-- import finnhub api with token
+- import Finnhub api with token
 
 
 ## [1.6.1] - 2022-03-18

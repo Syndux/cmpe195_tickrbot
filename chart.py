@@ -27,7 +27,12 @@ def get_chart(symbol, duration):
     url = f'https://elite.finviz.com/chart.ashx?t={symbol}&ty=c&ta={indicators}&p={temp_duration}&s=l'
 
     if (duration not in duration_options):
-        return 'Incorrect time period.'
+        invalid_duration = discord.Embed(
+            color = discord.Color.red(),
+            title = 'Invalid time period.',
+            description = '!help chart for more info.'
+        )
+        return invalid_duration
     else:
         response = requests.get(url, headers=headers)
         if not os.path.exists('charts'):
