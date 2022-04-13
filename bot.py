@@ -95,7 +95,6 @@ async def help_command(ctx, command=None):
             value = 'Gets daily information on the specific symbol.',
             inline = False
         )
-        
         embed.set_footer(
             text = 'TickrBot by Group #24 of SJSU - Sp\'22.\nDo your own due diligence if you choose to follow any information given by TickrBot. Any action is of your own accord. Group #24 and its affiliates are not liable for any losses you may incur.'            
         )
@@ -115,12 +114,10 @@ async def charting(ctx, symbol, duration):
         await ctx.send(file = image_send)
         os.remove(f'charts/{filename}')
         
-        
-# NOT DONE
+# !quote <symbol>        
 @bot.command(name = 'quote')
 async def quoting(ctx, symbol):
     embed = q.get_quote(symbol)
-    print("exited q.get_quote func")
     await ctx.send(embed = embed)
 
 

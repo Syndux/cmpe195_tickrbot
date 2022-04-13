@@ -17,14 +17,26 @@ All notable changes to this project will be documented in this file using Semant
 ### Fixed
 - For any bug fixes
 
+## [1.6.6] - 2022-04-13
+### Added
+- Quoting now also displays the day's change in value and percentage
+- Quoting functionality improved to simplify function in main bot file
+### Changed
+- Quoting displays the same name and symbol for ETFs
+### Fixed
+- Fixed the stock name lookup for ETFs
+### Removed
+- main.py removed
+
 
 ## [1.6.5] - 2022-04-11
 ### Changed
 - Look up stock quotes now uses Finnhub API function to simplify functionality
-- Quoting no longer needs to use requests library to fetch stock information from Finnhub
+- Charting functionality improved to simplify function in main bot file
 ### Fixed
-- 403 Error when looking up stock quotes with Finnhub API function
-
+- Fixed 403 Error when looking up stock quotes with Finnhub API function
+### Removed
+- Quoting no longer needs to use requests library to fetch stock information from Finnhub
 
 ## [1.6.4] - 2022-04-10
 ### Changed
