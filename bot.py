@@ -1,8 +1,9 @@
 import os
 import discord
 from discord.ext import commands
-import finviz
 import chart as c
+import quote as q
+
 import random
 
 description = 'TickrBot - A Python Discord Bot made by Group #24 of Sp\'22'
@@ -25,7 +26,7 @@ async def on_disconnect():
 @bot.event
 async def on_command_error(ctx, error):
     embed = discord.Embed(
-        color = discord.Color.red(),
+        color = discord.Color.red()
     )
     if isinstance(error, commands.MissingRequiredArgument):
         embed.add_field(
@@ -79,19 +80,18 @@ async def help_command(ctx, command=None):
             color = discord.Color.blue(),
             title = 'TickrBot Help \n!help <command> for help on a specific command.'
         )
-        
         embed.add_field(
-            name = f'!chart <symbol> <duration>',
+            name = '!chart <symbol> <duration>',
             value = 'Gets a stock chart in a specified duration.',
             inline = False
         )
         embed.add_field(
-            name = f'!help <command>',
+            name = '!help <command>',
             value = 'Get help with !help <command>.',
             inline = False
         )
         embed.add_field(
-            name = f'!quote <symbol>',
+            name = '!quote <symbol>',
             value = 'Gets daily information on the specific symbol.',
             inline = False
         )
@@ -105,16 +105,9 @@ async def help_command(ctx, command=None):
 # !chart <symbol> <duration> function
 @bot.command(name = 'chart')
 async def charting(ctx, symbol, duration):
-    embed = discord.Embed(
-        color = discord.Color.red()
-    )
     message = c.get_chart(symbol, duration)
-    if message ==  'Incorrect time period.':
-        embed.add_field(
-            name = message,
-            value = '!help for more info.'
-        )
-        await ctx.send(embed = embed)
+    if message != True:
+        await ctx.send(embed = message)
     else:
         filename = f'chart_{symbol}{duration}.png'
         with open(f'charts/chart_{symbol}{duration}.png', 'rb') as handle:
@@ -126,8 +119,9 @@ async def charting(ctx, symbol, duration):
 # NOT DONE
 @bot.command(name = 'quote')
 async def quoting(ctx, symbol):
-    embed = 'Get stock quote here'
-    await ctx.send(embed)
+    embed = q.get_quote(symbol)
+    print("exited q.get_quote func")
+    await ctx.send(embed = embed)
 
 
 #================================== FUN STUFF =======================================================================

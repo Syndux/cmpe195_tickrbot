@@ -6,7 +6,6 @@ from tabulate import tabulate
 import os
 import yfinance as yf
 
-
 # bot = discord.ext.commands.Bot(command_prefix = "!");
 
 client = discord.Client()
@@ -14,7 +13,6 @@ client = discord.Client()
 amc = yf.Ticker('AMC')
 price = str(amc.info['currentPrice'])
 sector = amc.info['sector']
-
 
 # ------ Earliest Options Expiration ---------
 
@@ -39,30 +37,29 @@ calls1 = opt1.calls.head()
 
 @client.event
 async def on_ready():
-  print('We have logged in as {0.user}'.format(client))
+    print('We have logged in as {0.user}'.format(client))
+
 
 @client.event
 async def on_message(message):
-  if message.author == client.user:
-    return
+    if message.author == client.user:
+        return
 
-  if message.content.startswith('!AMC'):
-    await message.channel.send('Current Price of AMC: $'+ price)
-    await message.channel.send("Sector: " + sector)
-    await message.channel.send("Call options: ")
-    print(calls)
-    await message.channel.send(calls)
+    if message.content.startswith('!AMC'):
+        await message.channel.send('Current Price of AMC: $' + price)
+        await message.channel.send("Sector: " + sector)
+        await message.channel.send("Call options: ")
+        print(calls)
+        await message.channel.send(calls)
 
-    # await message.channel.send(tabulate(calls, headers='keys', tablefmt='psql'))
+        # await message.channel.send(tabulate(calls, headers='keys', tablefmt='psql'))
 
-
-  if message.content.startswith('!GME'):
-    await message.channel.send('`Current Price of GME: $'+ gprice +'`')
-    await message.channel.send("`Sector: " + gsector +'`')
-    await message.channel.send("Call options: ")
-    await message.channel.send(calls1)
-    await message.channel.send("`Summary: " + gsumm+'`')
-
+    if message.content.startswith('!GME'):
+        await message.channel.send('`Current Price of GME: $' + gprice + '`')
+        await message.channel.send("`Sector: " + gsector + '`')
+        await message.channel.send("Call options: ")
+        await message.channel.send(calls1)
+        await message.channel.send("`Summary: " + gsumm + '`')
 
 
 #------------------- User Command Parsing ---------------------
@@ -76,8 +73,5 @@ async def on_message(message):
 # async def test(bot, arg):
 #     await bot.send(arg)
 
-
-
 client.run(os.environ['TOKEN'])
 # bot.run(os.environ['TOKEN'])
-
