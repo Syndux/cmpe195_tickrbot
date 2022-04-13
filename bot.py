@@ -1,8 +1,9 @@
 import os
 import discord
 from discord.ext import commands
-import finviz
 import chart as c
+import quote as q
+
 import random
 
 description = 'TickrBot - A Python Discord Bot made by Group #24 of Sp\'22'
@@ -81,17 +82,17 @@ async def help_command(ctx, command=None):
         )
         
         embed.add_field(
-            name = f'!chart <symbol> <duration>',
+            name = '!chart <symbol> <duration>',
             value = 'Gets a stock chart in a specified duration.',
             inline = False
         )
         embed.add_field(
-            name = f'!help <command>',
+            name = '!help <command>',
             value = 'Get help with !help <command>.',
             inline = False
         )
         embed.add_field(
-            name = f'!quote <symbol>',
+            name = '!quote <symbol>',
             value = 'Gets daily information on the specific symbol.',
             inline = False
         )
@@ -112,7 +113,7 @@ async def charting(ctx, symbol, duration):
     if message ==  'Incorrect time period.':
         embed.add_field(
             name = message,
-            value = '!help for more info.'
+            value = '!help chart for more info.'
         )
         await ctx.send(embed = embed)
     else:
@@ -126,7 +127,7 @@ async def charting(ctx, symbol, duration):
 # NOT DONE
 @bot.command(name = 'quote')
 async def quoting(ctx, symbol):
-    embed = 'Get stock quote here'
+    embed = q.get_quote(symbol)
     await ctx.send(embed)
 
 
