@@ -1,22 +1,6 @@
 # Changelog
 All notable changes to this project will be documented in this file using Semantic Versioning 2.0.0.
 
-
-## [X.Y.Z] - yyyy-mm-dd
-- X is Major
-- Y is Minor
-- Z is Patch
-### Added
-- New features
-### Changed
-- Changes in existing functionality
-### Deprecated
-- For once-stable features removed in upcoming releases
-### Removed
-- For deprecated features removed in this release
-### Fixed
-- For any bug fixes
-
 ## [1.6.6] - 2022-04-13
 ### Added
 - Quoting now also displays the day's change in value and percentage
